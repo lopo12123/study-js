@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta title="修改元素属性">
+    </head>
+
+    <body>
+        <button id="photo1">图片1</button>
+        <button id="photo2">图片2</button>
+        <img id="img" src="PHOTOS/PHO6_1_修改元素属性_图片1.png">
+
+        <script>
+            var btn1 = document.getElementById('photo1');
+            var btn2 = document.getElementById('photo2');
+            var img = document.getElementById('img');
+
+            btn1.onclick = function(){
+                img.src = "PHOTOS/PHO6_1_修改元素属性_图片1.png";
+            }
+            btn2.onclick = function(){
+                img.src = "PHOTOS/PHO6_2_修改元素属性_图片2.png";
+            }
+        </script>
+
+    </body>
+
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 仿登陆页面 -->
+        <!-- 点击切换密码的显示/隐藏 -->
+        <meta charset="utf-8">
+        <meta title="显示/隐藏密码">
+        <style>
+            .box {
+                position: relative;
+                width: 400px;
+                outline: none;
+                margin: 100px auto;
+            }
+
+            .box input {
+                width: 370px;
+                height: 30px;
+                border: 0;
+                outline: none;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .box label {
+                position: absolute;
+                top: 2px;
+                right: 2px;
+                user-select: none;
+            }
+            
+        </style>
+    </head>
+
+    <body>
+        <div class="box">
+            <label for="psw"><span id="eye">o</span></label>
+            <input type="password" name="" id="psw">
+            <p id="msg">当前密码为隐藏状态</p>
+        </div>
+
+        <script>
+            // 显示/隐藏 切换
+            var eye = document.getElementById('eye');  // 图标
+            var psw = document.getElementById('psw');  // 框
+            var msg = document.getElementById('msg');  // 提示信息
+
+            eye.onclick = function() {
+                if(eye.innerText == 'o'){
+                    psw.type = 'text';
+                    eye.innerText = 'x';
+                    msg.innerText = '当前密码为显示状态';
+                }
+                else if(eye.innerText == 'x'){
+                    psw.type = 'password';
+                    eye.innerText = 'o';
+                    msg.innerText = '当前密码为隐藏状态';
+                }
+            }
+        </script>
+    </body>
+
+
+</html>

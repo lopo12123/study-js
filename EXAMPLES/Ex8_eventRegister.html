@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta title="两种事件注册方式">
+    </head>
+    
+    <body>
+        <button>传统方法注册事件</button>
+        <button>监听方法注册事件</button>
+        <script>
+            var btns = document.querySelectorAll('button');
+
+            // 方法1 - 后注册的事件 覆盖 先注册的事件
+            btns[0].onclick = function() {
+                alert('传统方法注册事件1');
+            }
+            btns[0].onclick = function() {
+                alert('传统方法注册事件2');
+            }
+
+            // 方法2 - 所有注册的事件 依次执行
+            btns[1].addEventListener('click', function() {
+                alert('监听方法注册事件1');
+            })
+            btns[1].addEventListener('click', function() {
+                alert('监听方法注册事件2');
+            })
+        </script>
+    </body>
+</html>

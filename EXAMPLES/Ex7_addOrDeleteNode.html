@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta title="简单版发布留言">
+        <style>
+            #container {
+                position: relative;
+                width: 220px;
+                height: 300px;
+                margin: 10px auto;
+                border: solid 1px #ccc;
+            }
+            #iptText {
+                position: relative;
+                width: 200px;
+                height: 50px;
+                margin: 10px auto;
+                display: block;
+            }
+            #publish {
+                position: relative;
+                margin: 10px auto;
+                display: block;
+            }
+            #delete {
+                position: relative;
+                margin: 10px auto;
+                display: block;
+            }
+            ul {
+                position: relative;
+                width: 160px;
+                margin: 10px auto;
+                border: solid 1px #ccc;
+                display: block;
+            }
+            li a {
+                float: right;
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="container">
+            <textarea id="iptText"></textarea>
+            <button id="publish">publish</button>
+            <button id="delete">delete</button>
+            <ul></ul>
+        </div>
+        <script>
+            var ipt = document.getElementById('iptText');
+            var btn1 = document.getElementById('publish');
+            var btn2 = document.getElementById('delete');
+            var ul = document.querySelector('ul');
+
+            btn1.onclick = function() {
+                if (ipt.value != '') {
+                    var newLi = document.createElement('li');  // 新建
+                    // ul.appendChild(newLi);  // 添加(末尾)
+                    ul.insertBefore(newLi, ul.children[0]);  // 添加(头部)
+                    newLi.innerHTML = ipt.value + '<a href="javascript:void(0);">删除</a>';  // 添加内容 - 添加链接(删除)
+                    ipt.value = '';  // 清空输入框
+                }
+                var as = document.querySelectorAll('a');
+                for(var i = 0; i < as.length; i ++) {
+                    as[i].onclick = function() {
+                        this.parentNode.parentNode.removeChild(this.parentNode);
+                    }
+                }
+            }
+            btn2.onclick = function() {
+                if (ul.children.length != 0) {
+                    ul.removeChild(ul.children[ul.children.length - 1]);  // 删除最后一个子节点
+                }
+            }
+
+        </script>
+    </body>
+</html>

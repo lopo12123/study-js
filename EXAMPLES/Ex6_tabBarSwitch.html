@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta title="Tab栏切换显示">
+        <style>
+            #container {  /* 整个内容的框 */
+                position: relative;
+                width: 455px;
+                height: 300px;
+                margin: 100px auto;
+                border: solid 1px #ccc;
+                user-select: none;  /* 禁用选中文字 */
+            }
+
+            #tabBar {  /* 上面的框 tab bar */
+                position: relative;
+                width: 435px;
+                height: 50px;
+                margin: 10px auto;
+                border: solid 1px #ccc;
+            }
+            ul {
+                margin: 10px;
+                padding: 0;
+            }
+            li {
+                width: 98px;
+                height: 28px;
+                margin: 0 auto;
+                padding: 0;
+                background-color: whitesmoke;
+                border: solid 1px #ccc;
+                display: inline-block;
+                text-align: center;
+            }
+            .choose {
+                /* 被选中的栏背景变色 */
+                background-color: rgba(230, 243, 46, 0.616);
+            }
+
+            #textBlock {  /* 下面的框 text block */
+                position: relative;
+                width: 435px;
+                height: 200px;
+                margin: 10px auto;
+                border: solid 1px #ccc;
+                text-align: center;
+            }
+            .text {
+                display: none;
+            }
+            #one {
+                display: block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="container">
+            <div id="tabBar">
+                <ul>
+                    <li class="choose" index='one'>第一栏</li>
+                    <li index='two'>第二栏</li>
+                    <li index='three'>第三栏</li>
+                    <li index='four'>第四栏</li>
+                </ul>
+            </div>
+            <div id="textBlock">
+                <div class="text" id="one">第一栏对应的内容</div>
+                <div class="text" id="two">第二栏对应的内容</div>
+                <div class="text" id="three">第三栏对应的内容</div>
+                <div class="text" id="four">第四栏对应的内容</div>
+            </div>
+        </div>
+        <script>
+            // 点击第几栏就在下方的框中显示第几栏对应的内容
+            var opts = document.getElementsByTagName('li');
+            var allShows = document.getElementsByClassName('text');
+            var current = '';
+
+            for(var i = 0; i < opts.length; i ++){
+                opts[i].onclick = function() {
+                    for (var i = 0; i < opts.length; i ++){  // 遍历移除所有li继承的choose类的样式 - 恢复默认样式
+                        opts[i].className = '';
+                    }
+                    this.className = 'choose';  // 为当前选中的栏继承类 - 设置选中样式(choose)
+
+                    var show = document.getElementById(this.getAttribute('index'));  // 获取需要显示的内容的id
+                    for(var i = 0; i < allShows.length; i ++){  // 遍历隐藏所有可显示的内容 - 清空显示区
+                        allShows[i].style.display = 'none';
+                    }
+                    show.style.display = 'block';  // 显示选中的栏所对应的内容
+                }
+            }
+        </script>
+
+    </body>
+</html>

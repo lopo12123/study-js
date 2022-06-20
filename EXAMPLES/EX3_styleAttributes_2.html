@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 利用display：none属性隐藏/display：block显示 -->
+        <meta charset="utf-8">
+        <meta title="显示/隐藏二维码图片">
+        <style>
+            div {
+                width: 200px;
+                height: 200px;
+                background-color: pink;
+                display: block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="first"></div>
+        <script>
+            var div = document.querySelector('div');
+
+            div.onclick = function() {
+                div.style.display = 'none';  // 隐藏
+            }
+
+        </script>
+    </body>
+
+
+</html>

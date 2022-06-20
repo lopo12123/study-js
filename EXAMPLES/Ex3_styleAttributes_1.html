@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- js控制改变样式 -->
+        <meta charset="utf-8">
+        <meta title="修改元素样式 - 两种方法">
+        <style>
+            div {
+                width: 200px;
+                height: 200px;
+                background-color: pink;
+            }
+            .change {
+                background-color: #ccc;
+                width: 300px;
+                height: 300px;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div></div>
+        <script>
+            // 1. 使用element.style -> 适用于修改样式较少，功能较简单的情况
+            var div = document.querySelector('div');
+            /* div.onclick = function() {
+                // div.style.backgroundColor = '#ccc';
+                this.style.backgroundColor = '#ccc';
+            } */
+
+            // 2. 使用element.className 通过修改元素的类名(className)更改元素的样式 -> 适用于修改样式较多，功能较复杂的情况
+            div.onclick = function() {
+                this.className = 'change';
+            }
+
+        </script>
+    </body>
+
+
+</html>

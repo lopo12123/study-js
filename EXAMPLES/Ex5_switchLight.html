@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta title="开关灯">
+    </head>
+
+    <body>
+        <p>当前为开灯</p>
+        <button>开关灯按钮</button>
+        <script>
+            var msg = document.querySelector('p');
+            var btn = document.querySelector('button');
+            
+            btn.onclick = function() {
+                if (msg.innerText == '当前为开灯') {
+                    msg.innerText = '当前为关灯';
+                    document.body.style.backgroundColor = 'black';
+                    msg.style.color = 'white';
+                }
+                else {
+                    msg.innerText = '当前为开灯';
+                    document.body.style.backgroundColor = 'white';
+                    msg.style.color = 'black';
+                }
+            }
+
+        </script>
+    </body>
+</html>

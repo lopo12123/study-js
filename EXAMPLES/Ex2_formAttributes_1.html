@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta title="修改表单元素">
+    </head>
+
+    <body>
+        <button id="btn">button</button>
+        <input id="ipt" type="text" value="输入内容">
+        <input type="submit">
+
+        <script>
+            var btn = document.getElementById('btn');
+            var ipt = document.getElementById('ipt');
+
+            btn.onclick = function(){
+                // 按键被点击 表单中显示
+                ipt.value = '点击了';
+                // 按钮点击后某个表单被禁用
+                btn.disabled = true;
+                // this.disabled = true  // this指向事件函数的调用者
+            }
+        </script>
+
+    </body>
+
+
+</html>

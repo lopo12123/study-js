@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta title="下拉菜单">
+        <style>
+            #wholeMenu {
+                position: relative;
+                width: 100px;
+                height: 120px;
+            }
+            #menu{
+                position: relative;
+                width: 98px;
+                height: 38px;
+                background-color: pink;
+                border: solid 1px #ccc;
+                text-align: center;
+            }
+            .opt {
+                width: 98px;
+                height: 38px;
+                background-color: beige;
+                border: solid 1px #ccc;
+                text-align: center;
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="wholeMenu">
+            <div id="menu">下拉菜单</div>
+            <div class="opt">red</div>
+            <div class="opt">yellow</div>
+            <div class="opt">green</div>
+        </div>
+        <script>
+            var menu = document.getElementById('menu');
+            var wholeMenu = document.getElementById('wholeMenu');
+            var opts = document.getElementsByClassName('opt');
+
+            menu.onmouseover = function() {  // 鼠标移上去显示
+                for(var i = 0; i < opts.length; i ++) {
+                    opts[i].style.display = 'block';
+                }
+                this.style.backgroundColor = 'greenyellow';  // 选中变色
+            }
+            wholeMenu.onmouseleave = function() {  // 离开隐藏
+                for(var i = 0; i < opts.length; i ++) {
+                    opts[i].style.display = 'none';
+                }
+                menu.style.backgroundColor = 'pink';  // 离开恢复
+            }
+            for(var i=0; i < opts.length; i ++) {  // 遍历 为事件注册函数
+                opts[i].onmouseover = function() {
+                    this.style.backgroundColor = 'orange';  // 选中变色
+                }
+                opts[i].onmouseleave = function() {
+                    this.style.backgroundColor = 'beige';  // 离开恢复
+                }
+                opts[i].onclick = function() {  // 点击更换背景颜色
+                    document.body.style.backgroundColor = this.innerHTML;
+                }
+            }
+        </script>
+    </body>
+</html>
