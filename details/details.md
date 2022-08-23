@@ -8,18 +8,30 @@
 - `debounce` - B
 - `throttle` - QWER
 
-```typescript
-const debounce = <Fn extends Function>(delayInMs: number, fn: Fn, args: Parameters<Fn>) => {
-    let _timerId: any = -1
-    let _t = Date.now()
+``` ts
+const debounce = <Fn extends (...Args: any[]) => any>(ms: number, fn: Fn)
+    : (...args: Parameters<Fn>) => void => {
+    let _timerId: any = null
 
-    return () => {
-        if(Date.now() - _t < delayInMs) {
-            clearTimeout(_timerId)
-            setTimeout(() => {
-                fn(args)
-            }, delayInMs)
-        }
+    return (...args: Parameters<Fn>) => {
+        if(!!_timerId) clearTimeout(_timerId)
+        _timerId = setTimeout(fn, ms, ...args)
+    }
+}
+
+const throttle = <Fn extends (...args: any[]) => any>(ms: number, fn: Fn)
+    : (...args: Parameters<Fn>) => void => {
+    let _timerId: any = null
+
+    return (...args: Parameters<Fn>) => {
+        if(!!_timerId) clearTimeout(_timerId)
+        _timerId = setTimeout(fn, ms, ...args)
     }
 }
 ```
+
+### 原型/原型链
+
+- 原型 `prototype` => 函数特有
+- 原型链 `_proto_` => 所有都有 `[[prototype]]`(谷歌浏览器显示形式)
+- 原型链顶端为 `null` (`Object.prototype._proto_`)
